@@ -1,5 +1,5 @@
-const tracks=[["Ночной город (пример)","Harry Demo"],["Неоновые волны (пример)","SoundHelix"],["Утренний кофе (пример)","Harry Demo"],["Дорога домой (пример)","SoundHelix"],["Звёздная пыль (пример)","Harry Demo"]]
-.map((t,i)=>({title:t[0],artist:t[1],src:`https://www.soundhelix.com/examples/mp3/SoundHelix-Song-${i+1}.mp3`}));
+const tracks=[["Трек 1","HarryWantsMusic"],["Трек 2","HarryWantsMusic"],["Трек 3","HarryWantsMusic"],["Трек 4","HarryWantsMusic"],["Трек 5","HarryWantsMusic"],["Трек 6","HarryWantsMusic"]]
+.map((t,i)=>({title:t[0],artist:t[1],src:`tracks/track-${i+1}.mp3`}));
 const $=id=>document.getElementById(id),a=$("audio"),pl=$("playlist");let cur=0;
 const fmt=s=>isNaN(s)?"0:00":Math.floor(s/60)+":"+String(Math.floor(s%60)).padStart(2,"0");
 tracks.forEach((t,i)=>{const li=document.createElement("li");li.innerHTML=`<span style="color:inherit">${i+1}. ${t.title} — ${t.artist}</span><span>▶</span>`;li.onclick=()=>{load(i);a.play()};pl.appendChild(li)});
