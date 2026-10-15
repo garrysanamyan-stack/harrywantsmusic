@@ -28,3 +28,5 @@ form{display:grid;gap:14px;max-width:520px;margin-top:20px}
 form input,form textarea{background:#161624;border:1px solid #ffffff1f;color:#fff;padding:14px;border-radius:12px;font:inherit}
 textarea{min-height:100px}.ok{color:#38ef7d}footer{text-align:center;padding:30px;opacity:.5;border-top:1px solid #ffffff12}
 @media(max-width:640px){.nav nav{display:none}section{padding:56px 5%}}
+
+#cover{width:96px!important;height:96px!important;min-width:96px;border-radius:12px;box-shadow:0 8px 30px rgba(255,45,120,.35)}
