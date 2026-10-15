@@ -1,4 +1,4 @@
-const tracks=[["Трек 1","HarryWantsMusic"],["Трек 2","HarryWantsMusic"],["Трек 3","HarryWantsMusic"],["Трек 4","HarryWantsMusic"],["Трек 5","HarryWantsMusic"],["Трек 6","HarryWantsMusic"],["Boro Boro (Masion Remix)","Arash / Masion Music"]]
+const tracks=[["Трек 1","HarryWantsMusic"],["Трек 2","HarryWantsMusic"],["Трек 3","HarryWantsMusic"],["Трек 4","HarryWantsMusic"],["Трек 5","HarryWantsMusic"],["Трек 6","HarryWantsMusic"],["Arash - Boro Boro Harry Remix","HarryWantsMusic"]]
 .map((t,i)=>({title:t[0],artist:t[1],src:`tracks/track-${i+1}.mp3`}));
 const $=id=>document.getElementById(id),a=$("audio"),pl=$("playlist");let cur=0;
 const fmt=s=>isNaN(s)?"0:00":Math.floor(s/60)+":"+String(Math.floor(s%60)).padStart(2,"0");
