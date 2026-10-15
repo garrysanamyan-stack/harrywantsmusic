@@ -10,3 +10,4 @@ a.onplay=()=>$("play").textContent="⏸";a.onpause=()=>$("play").textContent="�
 a.ontimeupdate=()=>{$("seek").value=a.duration?a.currentTime/a.duration*100:0;$("cur").textContent=fmt(a.currentTime);$("dur").textContent=fmt(a.duration)};
 $("seek").oninput=e=>{if(a.duration)a.currentTime=e.target.value/100*a.duration};$("vol").oninput=e=>a.volume=e.target.value;a.volume=.8;
 $("form").onsubmit=e=>{e.preventDefault();$("ok").textContent="Спасибо, "+e.target.name.value+"! Вы подписаны 🎶";e.target.reset()};
+fetch("https://abacus.jasoncameron.dev/hit/harrywantsmusic-garrysanamyan/views").then(r=>r.json()).then(d=>{if(d&&d.value!=null)$("views").textContent=" · 👁 "+d.value+" просмотров"}).catch(()=>{});
