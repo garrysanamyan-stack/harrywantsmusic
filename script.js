@@ -9,5 +9,14 @@ $("play").onclick=()=>a.paused?a.play():a.pause();$("next").onclick=()=>{load(cu
 a.onplay=()=>$("play").textContent="⏸";a.onpause=()=>$("play").textContent="▶";a.onended=()=>$("next").click();
 a.ontimeupdate=()=>{$("seek").value=a.duration?a.currentTime/a.duration*100:0;$("cur").textContent=fmt(a.currentTime);$("dur").textContent=fmt(a.duration)};
 $("seek").oninput=e=>{if(a.duration)a.currentTime=e.target.value/100*a.duration};$("vol").oninput=e=>a.volume=e.target.value;a.volume=.8;
-$("form").onsubmit=e=>{e.preventDefault();$("ok").textContent="Спасибо, "+e.target.name.value+"! Вы подписаны 🎶";e.target.reset()};
-fetch("https://abacus.jasoncameron.dev/hit/harrywantsmusic-garrysanamyan/views").then(r=>r.json()).then(d=>{if(d&&d.value!=null)$("views").textContent=" · 👁 "+d.value+" просмотров"}).catch(()=>{});
+$("form").onsubmit=e=>{e.preventDefault();$("ok").textContent=T("thanks").replace("{n}",e.target.name.value);e.target.reset()};
+fetch("https://abacus.jasoncameron.dev/hit/harrywantsmusic-garrysanamyan/views").then(r=>r.json()).then(d=>{if(d&&d.value!=null){VIEWS=d.value;showViews()}}).catch(()=>{});
+
+var VIEWS=null,LANG;
+const I18N={ru:{nav_tracks:"Треки",nav_about:"О нас",nav_contact:"Контакты",tagline:"Музыка, которую хочется слушать снова и снова",listen:"▶ Слушать сейчас",featured:"Избранные треки",about_title:"О нас",about_text:"HarryWantsMusic — место для тех, кто живёт музыкой. Мы собираем треки, открываем новые имена и делимся плейлистами на любое настроение.",contact_title:"Подписка и контакты",ph_name:"Ваше имя",ph_msg:"Сообщение (необязательно)",subscribe:"Подписаться",thanks:"Спасибо, {n}! Вы подписаны 🎶",views:"просмотров"},
+en:{nav_tracks:"Tracks",nav_about:"About",nav_contact:"Contact",tagline:"Music you want to hear again and again",listen:"▶ Listen now",featured:"Featured tracks",about_title:"About",about_text:"HarryWantsMusic is a place for people who live for music. We collect tracks, discover new names and share playlists for every mood.",contact_title:"Subscribe & contact",ph_name:"Your name",ph_msg:"Message (optional)",subscribe:"Subscribe",thanks:"Thanks, {n}! You're subscribed 🎶",views:"views"}};
+function T(k){return I18N[LANG][k]}
+function showViews(){if(VIEWS!=null)$("views").textContent=" · 👁 "+VIEWS+" "+T("views")}
+function setLang(l){LANG=l==="en"?"en":"ru";document.documentElement.lang=LANG;document.querySelectorAll("[data-i18n]").forEach(e=>e.textContent=T(e.dataset.i18n));document.querySelectorAll("[data-i18n-ph]").forEach(e=>e.placeholder=T(e.dataset.i18nPh));document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.lang===LANG));showViews();if($("ok").textContent)$("ok").textContent=""}
+document.querySelectorAll(".lang button").forEach(b=>b.onclick=()=>{try{localStorage.setItem("hwm_lang",b.dataset.lang)}catch(e){}setLang(b.dataset.lang)});
+(function(){let q=new URLSearchParams(location.search).get("lang"),s=null;try{s=localStorage.getItem("hwm_lang")}catch(e){}if(q==="en"||q==="ru"){try{localStorage.setItem("hwm_lang",q)}catch(e){}setLang(q)}else setLang(s||((navigator.language||"").toLowerCase().startsWith("ru")?"ru":"en"))})();

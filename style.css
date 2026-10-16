@@ -30,3 +30,7 @@ textarea{min-height:100px}.ok{color:#38ef7d}footer{text-align:center;padding:30p
 @media(max-width:640px){.nav nav{display:none}section{padding:56px 5%}}
 
 #cover{width:96px!important;height:96px!important;min-width:96px;border-radius:12px;box-shadow:0 8px 30px rgba(255,45,120,.35)}
+
+.lang{display:flex;align-items:center;gap:2px;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:3px 8px;font-size:12px;margin-left:12px;flex-shrink:0}
+.lang span{opacity:.4}.lang button{background:none;border:0;color:inherit;opacity:.55;font:inherit;font-weight:700;cursor:pointer;padding:2px 4px}.lang button.on{opacity:1;color:#ff3d81}
+.nav nav{margin-left:auto}
