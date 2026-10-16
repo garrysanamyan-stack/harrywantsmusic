@@ -9,7 +9,7 @@ $("play").onclick=()=>a.paused?a.play():a.pause();$("next").onclick=()=>{load(cu
 a.onplay=()=>$("play").textContent="⏸";a.onpause=()=>$("play").textContent="▶";a.onended=()=>$("next").click();
 a.ontimeupdate=()=>{$("seek").value=a.duration?a.currentTime/a.duration*100:0;$("cur").textContent=fmt(a.currentTime);$("dur").textContent=fmt(a.duration)};
 $("seek").oninput=e=>{if(a.duration)a.currentTime=e.target.value/100*a.duration};$("vol").oninput=e=>a.volume=e.target.value;a.volume=.8;
-$("form").onsubmit=e=>{e.preventDefault();$("ok").textContent=T("thanks").replace("{n}",e.target.name.value);e.target.reset()};
+$("form").onsubmit=e=>{e.preventDefault();const f=e.target,n=f.name.value,d=Object.fromEntries(new FormData(f));d._subject="Новая подписка HarryWantsMusic";d._template="table";fetch("https://formsubmit.co/ajax/harrywantsmusic@gmail.com",{method:"POST",headers:{"Content-Type":"application/json",Accept:"application/json"},body:JSON.stringify(d)}).catch(()=>{});$("ok").textContent=T("thanks").replace("{n}",n);f.reset()};
 fetch("https://abacus.jasoncameron.dev/hit/harrywantsmusic-garrysanamyan/views").then(r=>r.json()).then(d=>{if(d&&d.value!=null){VIEWS=d.value;showViews()}}).catch(()=>{});
 
 var VIEWS=null,LANG;
