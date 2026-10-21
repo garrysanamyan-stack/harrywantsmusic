@@ -1,5 +1,5 @@
-const tracks=[["Трек 1","HarryWantsMusic"],["Трек 2","HarryWantsMusic"],["Трек 3","HarryWantsMusic"],["Трек 4","HarryWantsMusic"],["Трек 5","HarryWantsMusic"],["Трек 6","HarryWantsMusic"],["Arash - Boro Boro Harry Remix","HarryWantsMusic"],["SAYAN - Мальборо (Harry Remix)","HarryWantsMusic"],["Harry Beat - VHS","HarryWantsMusic"]]
-.map((t,i)=>({title:t[0],artist:t[1],src:`tracks/track-${i+1}.mp3?v=18`,cover:`covers/cover-${i+1}.jpg`}));
+const tracks=[["Трек 1","HarryWantsMusic"],["Трек 2","HarryWantsMusic"],["Трек 3","HarryWantsMusic"],["Трек 4","HarryWantsMusic"],["Трек 5","HarryWantsMusic"],["Трек 6","HarryWantsMusic"],["__removed__",""],["SAYAN - Мальборо (Harry Remix)","HarryWantsMusic"],["Harry Beat - VHS","HarryWantsMusic"]]
+.map((t,i)=>({title:t[0],artist:t[1],src:`tracks/track-${i+1}.mp3?v=19`,cover:`covers/cover-${i+1}.jpg`})).filter(t=>t.title!=='__removed__');
 const $=id=>document.getElementById(id),a=$("audio"),pl=$("playlist");let cur=0;
 const fmt=s=>isNaN(s)?"0:00":Math.floor(s/60)+":"+String(Math.floor(s%60)).padStart(2,"0");
 tracks.forEach((t,i)=>{const li=document.createElement("li");li.innerHTML=`<span style="color:inherit;display:flex;align-items:center;gap:10px"><img src="${t.cover}" alt="" style="width:40px;height:40px;border-radius:6px;object-fit:cover">${i+1}. ${t.title} — ${t.artist}</span><span>▶</span>`;li.onclick=()=>{load(i);a.play()};pl.appendChild(li)});
